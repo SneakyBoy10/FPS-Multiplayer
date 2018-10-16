@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour
 
         float _xRot = Input.GetAxisRaw("Mouse Y");
 
-        Vector3 _cameraRotation = new Vector3(_xRot, 0, 0) * looksens;
+        float _cameraRotationX = _xRot * looksens;
 
-        motor.RotateCamera(_cameraRotation);
+        motor.RotateCamera(_cameraRotationX);
     }
 }
