@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Gun", menuName = "Gun")]
 public class Guns : ScriptableObject
 {
-    public string name;
+    public string Name;
     public string description;
     public string type;
 
