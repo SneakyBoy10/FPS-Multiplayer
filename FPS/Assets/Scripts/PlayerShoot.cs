@@ -7,12 +7,20 @@ public class PlayerShoot : NetworkBehaviour
 {
     private const string PLAYER_TAG = "Player";
 
-    public Guns gun;
+    [SerializeField]
+    private Guns gun;
+
+    [SerializeField]
+    private GameObject gunGFX;
 
     [SerializeField]
     private Camera cam;
+
     [SerializeField]
     private LayerMask mask;
+
+    [SerializeField]
+    private string gunLayerName = "Gun";
 
     private void Start()
     {
@@ -21,6 +29,8 @@ public class PlayerShoot : NetworkBehaviour
             Debug.Log("PlayerShoot: No camera referenced");
             this.enabled = false;
         }
+
+        gunGFX.layer = LayerMask.NameToLayer(gunLayerName);
     }
 
     private void Update()
