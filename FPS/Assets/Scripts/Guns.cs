@@ -11,6 +11,8 @@ public class Guns : ScriptableObject
 
     public Sprite logo;
 
+    public GameObject model;
+
     public int damage;
     public int range;
 }

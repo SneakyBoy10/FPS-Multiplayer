@@ -651,7 +651,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 86596ce8-d619-4625-b03a-9825187f59f8
-  projectName: FPS (1)
+  projectName: FPS Multipleyer Game
   organizationId: sneakyboy10
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
