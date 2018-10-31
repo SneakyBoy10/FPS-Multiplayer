@@ -15,4 +15,5 @@ public class Guns : ScriptableObject
 
     public int damage;
     public int range;
+    public int fireRate;
 }

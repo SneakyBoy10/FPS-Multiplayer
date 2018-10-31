@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMotor : MonoBehaviour
 {
@@ -50,7 +52,7 @@ public class PlayerMotor : MonoBehaviour
                 animator.SetBool("isWalking", false);
                 animator.SetBool("isIdle", false);
                 animator.SetBool("isRunning", true);
-                controller.speed = 10f;
+                controller.speed = 7.5f;
             }
             else
             {

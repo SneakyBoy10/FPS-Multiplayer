@@ -11,9 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12924c319d186614486778c220627761, type: 3}
   m_Name: PlaceHolder
   m_EditorClassIdentifier: 
-  Name: Glock
-  description: Good gun
-  type: Pistol
+  Name: Test
+  description: Test
+  type: Random
   logo: {fileID: 21300000, guid: 35b16385b10282047913d2176a8aca9f, type: 3}
-  damage: 40
+  model: {fileID: 1357124047477808, guid: 6eab69a835a4a334bac2ae75b8fa8f9e, type: 2}
+  damage: 5
   range: 100
+  fireRate: 10

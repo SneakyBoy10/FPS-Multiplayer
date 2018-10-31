@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[RequireComponent(typeof(GunManager))]
 public class PlayerShoot : NetworkBehaviour
 {
     private const string PLAYER_TAG = "Player";
 
-    [SerializeField]
-    private Guns gun;
+    private Guns currentGun;
 
     [SerializeField]
     private GameObject gunGFX;
@@ -19,8 +19,7 @@ public class PlayerShoot : NetworkBehaviour
     [SerializeField]
     private LayerMask mask;
 
-    [SerializeField]
-    private string gunLayerName = "Gun";
+    private GunManager gunManager;
 
     private void Start()
     {
@@ -30,14 +29,29 @@ public class PlayerShoot : NetworkBehaviour
             this.enabled = false;
         }
 
-        gunGFX.layer = LayerMask.NameToLayer(gunLayerName);
+        gunManager = GetComponent<GunManager>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        currentGun = gunManager.GetCurrentGun();
+        if (currentGun.fireRate <= 0f)
         {
-            Shoot();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                InvokeRepeating("Shoot", 0f, 1f/currentGun.fireRate);
+            }
+            else if (Input.GetButtonUp("Fire1"))
+            {
+                CancelInvoke("Shoot");
+            }
         }
     }
 
@@ -45,11 +59,11 @@ public class PlayerShoot : NetworkBehaviour
     private void Shoot()
     {
         RaycastHit _hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out _hit, gun.range, mask))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out _hit, currentGun.range, mask))
         {
             if (_hit.collider.tag == PLAYER_TAG)
             {
-                CmdPlayerShot(_hit.collider.name, gun.damage);
+                CmdPlayerShot(_hit.collider.name, currentGun.damage);
             }
         }
     }
