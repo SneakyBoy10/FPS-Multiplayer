@@ -12,21 +12,21 @@ public class GunManager : NetworkBehaviour
     private string gunLayerName = "Gun";
 
     [SerializeField]
-    private Guns baseGun;
+    private Gun baseGun;
 
-    private Guns currentGun;
+    private Gun currentGun;
 
     private void Start()
     {
         EquipGun(baseGun);
     }
 
-    public Guns GetCurrentGun()
+    public Gun GetCurrentGun()
     {
         return currentGun;
     }
 
-    private void EquipGun(Guns _gun)
+    private void EquipGun(Gun _gun)
     {
         currentGun = _gun;
 
