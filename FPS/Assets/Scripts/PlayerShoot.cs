@@ -8,7 +8,7 @@ public class PlayerShoot : NetworkBehaviour
 {
     private const string PLAYER_TAG = "Player";
 
-    private Gun currentGun;
+    private Guns currentGun;
 
     [SerializeField]
     private GameObject gunGFX;
